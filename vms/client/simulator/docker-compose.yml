@@ -1,0 +1,58 @@
+version: "3"
+
+# Замените iiyaemikoii на ваш DockerHub username
+# Замените 192.168.3.10 на IP вашей Linux B
+
+x-common: &common
+  image: iiyaemikoii/data-simulator:latest
+  restart: unless-stopped
+
+services:
+
+  temp_sensor_1:
+    <<: *common
+    environment:
+      - SIM_HOST=192.168.3.10
+      - SIM_NAME=temp_boiler
+      - SIM_PERIOD=5
+      - SIM_TYPE=temperature
+
+  temp_sensor_2:
+    <<: *common
+    environment:
+      - SIM_HOST=192.168.3.10
+      - SIM_NAME=temp_ambient
+      - SIM_PERIOD=3
+      - SIM_TYPE=temperature
+
+  pressure_sensor_1:
+    <<: *common
+    environment:
+      - SIM_HOST=192.168.3.10
+      - SIM_NAME=press_main_line
+      - SIM_PERIOD=7
+      - SIM_TYPE=pressure
+
+  current_sensor_1:
+    <<: *common
+    environment:
+      - SIM_HOST=192.168.3.10
+      - SIM_NAME=current_motor_a
+      - SIM_PERIOD=2
+      - SIM_TYPE=current
+
+  current_sensor_2:
+    <<: *common
+    environment:
+      - SIM_HOST=192.168.3.10
+      - SIM_NAME=current_motor_b
+      - SIM_PERIOD=2
+      - SIM_TYPE=current
+
+  humidity_sensor_1:
+    <<: *common
+    environment:
+      - SIM_HOST=192.168.3.10
+      - SIM_NAME=hum_warehouse
+      - SIM_PERIOD=10
+      - SIM_TYPE=humidity
