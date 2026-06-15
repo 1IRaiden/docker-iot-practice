@@ -185,7 +185,10 @@ docker exec -it influxdb influx -database sensors \
 - Текущие значения влажности (1 датчик)
 - Среднее значение по всем датчикам (агрегат)
 
-Открыть: `http://IP_LINUX_C:3000` (admin / admin)
+В VirtualBox для Linux C добавить Port Forwarding:
+- Host Port: `3000` → Guest Port: `3000`
+
+Открыть: http://127.0.0.1:3000 (admin / admin)
 
 ![Grafana Dashboard](assets/images/grafana_dashboard.png)
 
